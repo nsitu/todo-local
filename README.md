@@ -1,4 +1,4 @@
-# Static HTML/CSS/JS Workspace  
+# TODO List persisted via Local Storage
 [![Open in Coder](https://ixdcoder.com/open-in-coder.svg)](https://ixdcoder.com/templates/Static/workspace?name=TODO-Local&mode=auto&param.git_repo=https://bender.sheridanc.on.ca/system-design/todo-local&param.code_template=custom)
 
 ## About
