@@ -22,7 +22,7 @@ main{
   min-height: 100vh;
 }
 header h2 { 
-  font-size: 4rem;
+  font-size: 2rem;
   margin: 2rem 0 1rem 0;
   /* Fonts via Adobe */ 
   font-family: highgate,sans-serif;
@@ -32,7 +32,7 @@ header h2 {
   gap: 1rem;
   align-items: center;
 } 
-header h2 small{
+header h2 i{
   font-size: 1rem;
 }
 header h2 a{
