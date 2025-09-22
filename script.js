@@ -61,10 +61,10 @@ document.querySelector('#dataForm')
 
 
 // There's one click listener for the entire list
+// we will respond based on which button was clicked
 document.querySelector('#itemList')
   .addEventListener('click', event => {
     event.preventDefault()
-    // we will respond differently depending on which button was clicked
     let element = event.target;
     if (element.tagName == 'BUTTON') {
       // fnd the todo item that the button belongs to
