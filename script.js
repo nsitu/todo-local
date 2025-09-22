@@ -1,10 +1,10 @@
 // Data functions for create, read, update, and delete
-import {createData, readData, updateData, deleteData} from './crud.js'
+import { createData, readData, updateData, deleteData } from './crud.js'
 
-// Display all the todo items
-const displayData = () =>{
-  document.querySelector('#itemList').innerHTML = 
-    readData().map(todo => 
+// Display all the todo itemss
+const displayData = () => {
+  document.querySelector('#itemList').innerHTML =
+    readData().map(todo =>
         /*html*/`<li class="todo" data-id="${todo.id}">
           <div class="content">
             <span>${todo.content}</span>
@@ -20,8 +20,8 @@ const displayData = () =>{
         </li>` ).join('')
 }
 
-const niceDate = (dateString) =>{
-  return new Date(dateString).toLocaleString('en-ca',{
+const niceDate = (dateString) => {
+  return new Date(dateString).toLocaleString('en-ca', {
     month: "short",
     day: "numeric",
     hour: "numeric",
@@ -31,64 +31,64 @@ const niceDate = (dateString) =>{
 
 // show the edit form for a given todo item
 // also, move the cursor to the end of the text input for better usability
-const showForm = (todo) => {  
+const showForm = (todo) => {
   todo.querySelector('form').style.display = 'flex'
-  todo.querySelector('.content').style.display = 'none' 
-  let userInput = todo.querySelector('form input') 
-  let end = userInput.value.length  
+  todo.querySelector('.content').style.display = 'none'
+  let userInput = todo.querySelector('form input')
+  let end = userInput.value.length
   userInput.setSelectionRange(end, end)
   userInput.focus()
-} 
+}
 
 // hide the edit form for a given todo item
-const hideForm = (todo) => {  
+const hideForm = (todo) => {
   todo.querySelector('form').style.display = 'none'
-  todo.querySelector('.content').style.display = 'flex' 
+  todo.querySelector('.content').style.display = 'flex'
 }
 
 // Monitor the input form 
 // and create a new todo on submit
 document.querySelector('#dataForm')
   .addEventListener('submit', event => {
-    event.preventDefault() 
+    event.preventDefault()
     let textInput = document.querySelector("#textInput");
     if (textInput.value) {
       createData(textInput.value)
       displayData() // after creating, refresh the display
       textInput.value = "";
-    } 
+    }
   })
 
 
 // There's one click listener for the entire list
 document.querySelector('#itemList')
   .addEventListener('click', event => {
-    event.preventDefault() 
+    event.preventDefault()
     // we will respond differently depending on which button was clicked
     let element = event.target;
-    if  (element.tagName =='BUTTON'){
+    if (element.tagName == 'BUTTON') {
       // fnd the todo item that the button belongs to
-      let todo = element.parentElement.parentElement; 
-      if (element.className == "edit"){
+      let todo = element.parentElement.parentElement;
+      if (element.className == "edit") {
         showForm(todo)
       }
-      if (element.className == "cancel"){
+      if (element.className == "cancel") {
         hideForm(todo)
       }
-      if (element.className == "save"){
+      if (element.className == "save") {
         updateData(todo)
         displayData()  // after updating the todo refresh the display
-      } 
-      if (element.className == "delete"){
+      }
+      if (element.className == "delete") {
         deleteData(todo)
         displayData() // after deleting the todo, refresh the display.
       }
-    } 
+    }
   })
 
 
 // if there aren't any items yet, create a default item
-if ( ! readData().length ) createData("Make Lunch")
+if (!readData().length) createData("Make Lunch")
 
 // display the items
 displayData()
